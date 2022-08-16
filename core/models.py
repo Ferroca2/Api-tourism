@@ -11,7 +11,7 @@ class TouristSpot(models.Model):
     atractions = models.ManyToManyField(Atractions)
     comments = models.ManyToManyField(Comment)
     avaliations = models.ManyToManyField(Avaliation)
-    address =  models.ForeignKey(Address, on_delete=models.CASCADE)
+    address =  models.ForeignKey(Address, on_delete=models.CASCADE, null=True, blank= True)
 
     def __str__(self):
         return self.name
