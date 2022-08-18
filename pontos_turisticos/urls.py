@@ -22,9 +22,11 @@ from atractions.api.viewsets import AtractionsViewSet
 from addresses.api.viewsets import AddressViewSet
 from comments.api.viewsets import CommentViewSet
 from avaliations.api.viewsets import AvaliationViewSet
+from django.conf import settings
+from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
-router.register(r'touristspot', TouristSpotViewSet)
+router.register(r'touristspot', TouristSpotViewSet, basename='TouristSpot')
 router.register(r'atractions', AtractionsViewSet)
 router.register(r'address', AddressViewSet)
 router.register(r'comments', CommentViewSet)
@@ -33,4 +35,4 @@ router.register(r'avaliations', AvaliationViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
-]
+] +  static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
